@@ -1,25 +1,19 @@
-package co.com.sofka.crud;
+package co.com.sofka.crud.moldels;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
-@Table(name = "todo")
-public class Todo {
+@Table(name = "listtodo")
+public class ListTodo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
     private Long id;
     private String name;
-    private boolean completed;
-    private String groupListId;
 
-    public String getGroupListId() {
-        return groupListId;
-    }
-
-    public void setGroupListId(String groupListId) {
-        this.groupListId = groupListId;
-    }
+    @OneToMany(mappedBy = "listTodo", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Todo> todo;
 
     public Long getId() {
         return id;
@@ -37,11 +31,11 @@ public class Todo {
         this.name = name;
     }
 
-    public boolean isCompleted() {
-        return completed;
+    public ListTodo(Long id, String name) {
+        this.id = id;
+        this.name = name;
     }
 
-    public void setCompleted(boolean completed) {
-        this.completed = completed;
+    public ListTodo() {
     }
 }
