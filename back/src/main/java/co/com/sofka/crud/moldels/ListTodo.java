@@ -12,7 +12,7 @@ public class ListTodo {
     private Long id;
     private String name;
 
-    @OneToMany(mappedBy = "listTodo", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "listTodo")
     private List<Todo> todo;
 
     public Long getId() {

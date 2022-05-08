@@ -1,21 +1,18 @@
-package co.com.sofka.crud.moldels;
+package co.com.sofka.crud.DTO;
 
-import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
-@Entity
-@Table(name = "todo")
-public class Todo {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(unique = true, nullable = false)
+public class RequestTodo implements Serializable {
+
     private Long id;
+    @NotBlank
     private String name;
+    @NotNull
     private boolean completed;
-
-
-    @ManyToOne()
-    @JoinColumn(name="lisTodoid")
-    private ListTodo listTodo;
+    @NotNull
+    private RequestListTodo listTodo;
 
     public Long getId() {
         return id;
@@ -41,11 +38,11 @@ public class Todo {
         this.completed = completed;
     }
 
-    public ListTodo getListTodo() {
+    public RequestListTodo getListTodo() {
         return listTodo;
     }
 
-    public void setListTodo(ListTodo listTodo) {
+    public void setListTodo(RequestListTodo listTodo) {
         this.listTodo = listTodo;
     }
 }

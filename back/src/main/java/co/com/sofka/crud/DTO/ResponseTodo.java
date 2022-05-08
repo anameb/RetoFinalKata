@@ -1,21 +1,17 @@
-package co.com.sofka.crud.moldels;
+package co.com.sofka.crud.DTO;
 
-import javax.persistence.*;
+import java.io.Serializable;
 
-@Entity
-@Table(name = "todo")
-public class Todo {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(unique = true, nullable = false)
+public class ResponseTodo implements Serializable {
+
     private Long id;
+
     private String name;
+
     private boolean completed;
 
+    private ResponseListTodo listTodo;
 
-    @ManyToOne()
-    @JoinColumn(name="lisTodoid")
-    private ListTodo listTodo;
 
     public Long getId() {
         return id;
@@ -41,11 +37,11 @@ public class Todo {
         this.completed = completed;
     }
 
-    public ListTodo getListTodo() {
+    public ResponseListTodo getListTodo() {
         return listTodo;
     }
 
-    public void setListTodo(ListTodo listTodo) {
+    public void setListTodo(ResponseListTodo listTodo) {
         this.listTodo = listTodo;
     }
 }
