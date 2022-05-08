@@ -17,6 +17,7 @@ public class Todo {
     @JoinColumn(name="lisTodoid")
     private ListTodo listTodo;
 
+
     public Long getId() {
         return id;
     }
